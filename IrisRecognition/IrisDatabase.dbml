@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IrisDB" Class="IrisDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\IrisDB.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="IrisRecognition.Properties.Settings" SettingsPropertyName="IrisDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Administrator" Member="Administrators">
+    <Type Name="Administrator">
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Adress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CNIC" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="Administrator_Person" Member="Persons" ThisKey="AdminID" OtherKey="AdminID" Type="Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Iris_Image" Member="Iris_Images">
+    <Type Name="Iris_Image">
+      <Column Name="ImageID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ImagePattern" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Person_Iris_Image" Member="Person" ThisKey="PersonID" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Log_File" Member="Log_Files">
+    <Type Name="Log_File">
+      <Column Name="LogFileID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Person_Log_File" Member="Person" ThisKey="PersonID" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CNIC" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DoB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Designation" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RegisteredBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Person_Iris_Image" Member="Iris_Images" ThisKey="PersonID" OtherKey="PersonID" Type="Iris_Image" />
+      <Association Name="Person_Log_File" Member="Log_Files" ThisKey="PersonID" OtherKey="PersonID" Type="Log_File" />
+      <Association Name="Administrator_Person" Member="Administrator" ThisKey="AdminID" OtherKey="AdminID" Type="Administrator" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

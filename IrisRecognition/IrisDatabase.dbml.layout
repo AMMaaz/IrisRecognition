@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="IrisDatabase">
+  <DataContextMoniker Name="/IrisDatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="2f4d0d04-d3a1-49db-8e1b-d7e8e4c93fd6" absoluteBounds="0.75, 1.75, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/IrisDatabaseDataContext/Administrator" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e0acff7-561a-4876-b868-ac2fac7cd3b2" absoluteBounds="0.765, 2.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="21c85ecd-0f46-4180-aa9d-0a0b6cffb7c0" absoluteBounds="6.25, 1.25, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/IrisDatabaseDataContext/Iris_Image" />
+      <nestedChildShapes>
+        <elementListCompartment Id="359a0169-39d3-436f-95ea-cb12f1a0501a" absoluteBounds="6.265, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10b3b283-c729-4888-88b4-c869c6b51dfc" absoluteBounds="6.25, 3.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/IrisDatabaseDataContext/Log_File" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c857852-3c1d-4b03-86b4-b169dfac70d2" absoluteBounds="6.265, 3.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c4ede677-8f73-46f9-a423-8368d751c1fc" absoluteBounds="3.5, 1, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/IrisDatabaseDataContext/Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a5a0de6e-6d73-4097-b77f-765d68bda4b3" absoluteBounds="3.515, 1.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 1.94314697265625); (6.25 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IrisDatabaseDataContext/Person/Person_Iris_Image" />
+      <nodes>
+        <classShapeMoniker Id="c4ede677-8f73-46f9-a423-8368d751c1fc" />
+        <classShapeMoniker Id="21c85ecd-0f46-4180-aa9d-0a0b6cffb7c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.16429768880208); (6.25 : 4.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IrisDatabaseDataContext/Person/Person_Log_File" />
+      <nodes>
+        <classShapeMoniker Id="c4ede677-8f73-46f9-a423-8368d751c1fc" />
+        <classShapeMoniker Id="10b3b283-c729-4888-88b4-c869c6b51dfc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.02005126953125); (3.5 : 3.02005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IrisDatabaseDataContext/Administrator/Administrator_Person" />
+      <nodes>
+        <classShapeMoniker Id="2f4d0d04-d3a1-49db-8e1b-d7e8e4c93fd6" />
+        <classShapeMoniker Id="c4ede677-8f73-46f9-a423-8368d751c1fc" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
