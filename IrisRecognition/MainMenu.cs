@@ -12,9 +12,10 @@ namespace IrisRecognition
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        public MainMenu(string username)
         {
             InitializeComponent();
+            labelUsername.Text = "Welcome! " + username;
         }
 
         private void buttonAddUser_Click(object sender, EventArgs e)
@@ -36,6 +37,11 @@ namespace IrisRecognition
             this.Close();
             ViewLogFiles vlf = new ViewLogFiles();
             vlf.Show();
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            //labelUsername.Text = "Welcome" + 
         }
     }
 }

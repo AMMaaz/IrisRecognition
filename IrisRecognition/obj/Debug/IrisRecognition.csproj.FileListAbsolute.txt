@@ -17,5 +17,4 @@ C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\bin\Debug\IrisRecogni
 C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecognition.exe
 C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecognition.pdb
 C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecognition.DeleteUser.resources
-C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\bin\Debug\IrisDB.mdf
-C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\bin\Debug\IrisDB_log.ldf
+C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecognition.AddIrisImage.resources

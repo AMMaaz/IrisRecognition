@@ -33,6 +33,7 @@
             this.buttonDeleteUser = new System.Windows.Forms.Button();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonViewUsers = new System.Windows.Forms.Button();
+            this.labelUsername = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonViewLogFiles
@@ -74,11 +75,21 @@
             this.buttonViewUsers.Text = "view users";
             this.buttonViewUsers.UseVisualStyleBackColor = true;
             // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Location = new System.Drawing.Point(412, 21);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(55, 13);
+            this.labelUsername.TabIndex = 7;
+            this.labelUsername.Text = "Welcome!";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 445);
+            this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.buttonViewUsers);
             this.Controls.Add(this.buttonViewLogFiles);
             this.Controls.Add(this.buttonDeleteUser);
@@ -86,7 +97,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainMenu";
             this.Text = "Iris Authentication System - Main Menu";
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,5 +109,6 @@
         private System.Windows.Forms.Button buttonDeleteUser;
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.Button buttonViewUsers;
+        private System.Windows.Forms.Label labelUsername;
     }
 }

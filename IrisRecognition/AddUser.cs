@@ -27,9 +27,27 @@ namespace IrisRecognition
         private void buttonSave_Click(object sender, EventArgs e)
         {
             Person p = new Person();
-            p.PersonID = '9';
-            p.ID = Convert.ToString('1');
-            p.LName = Convert.ToString('2');
+            //p.PersonID = '4';
+            p.ID =  Convert.ToString('1');
+
+            p.FName = textBoxFName.Text;
+            p.LName = textBoxLName.Text;
+            p.Phone = textBoxPhone.Text;
+            p.Mobile = textBoxMobile.Text;
+            
+            ImageConverter convert = new ImageConverter();
+            byte[] img = (byte[])convert.ConvertTo(pictureBox2.Image, typeof(byte[]));
+            p.Photo = img;
+
+            p.DoB = dateTimePickerDateOfBirth.Value;
+            p.CNIC = textBoxCNIC.Text;
+            p.Address = textBoxAddress.Text;
+            p.Department = textBoxDepartment.Text;
+            p.Designation = textBoxDesignation.Text;
+            p.Email = textBoxEmail.Text;
+            p.Gender = comboBoxGender.Text;
+            p.Province = textBoxProvince.Text;
+
             //Iris_Image newIrisImage = new Iris_Image();
             //newIrisImage.ImageID = textBox1.Text;
 
@@ -38,18 +56,24 @@ namespace IrisRecognition
             //newIrisImage.ImagePattern = (img);
 
             //newIrisImage.PersonID = Convert.ToInt32(textBox2.Text);
+            
             db.Persons.InsertOnSubmit(p);
             db.SubmitChanges();
-            Iris_Image ii = new Iris_Image();
-            ii.ImageID = Convert.ToString('1');
-            ii.PersonID = '5';
-            
-            ImageConverter converter = new ImageConverter();
-            byte[] img = (byte[])converter.ConvertTo(pictureBox2.Image, typeof(byte[]));
 
-            ii.ImagePattern = img;
-            db.Iris_Images.InsertOnSubmit(ii);
-            db.SubmitChanges();
+            AddIrisImage aii = new AddIrisImage();
+            aii.ShowDialog();
+
+            //storing image in iris_image table
+            //Iris_Image ii = new Iris_Image();
+            ////ii.ImageID = '1';
+            ////ii.PersonID = '4';
+            
+            //ImageConverter converter = new ImageConverter();
+            //byte[] imge = (byte[])converter.ConvertTo(pictureBox2.Image, typeof(byte[]));
+
+            //ii.ImagePattern = imge;
+            //db.Iris_Images.InsertOnSubmit(ii);
+            //db.SubmitChanges();
         }
 
         private void AddUser_Load(object sender, EventArgs e)
@@ -62,10 +86,14 @@ namespace IrisRecognition
             pictureBox2.Image = Image.FromFile(openFileDialog1.FileName);
         }
 
+        int intgr = 1;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Iris_Image ii = db.Iris_Images.First(i => i.ImageID == "1");
 
+            Iris_Image ii = db.Iris_Images.First(i => i.ImageID == Convert.ToInt32(intgr));
+
+            intgr = intgr + 1;
 
             //one way
             //idon'tknowwhatiamdoing

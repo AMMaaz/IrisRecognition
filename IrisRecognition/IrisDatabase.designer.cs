@@ -22,7 +22,7 @@ namespace IrisRecognition
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="IrisDB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="IrisDataBase")]
 	public partial class IrisDatabaseDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,19 +33,19 @@ namespace IrisRecognition
     partial void InsertAdministrator(Administrator instance);
     partial void UpdateAdministrator(Administrator instance);
     partial void DeleteAdministrator(Administrator instance);
+    partial void InsertPerson(Person instance);
+    partial void UpdatePerson(Person instance);
+    partial void DeletePerson(Person instance);
     partial void InsertIris_Image(Iris_Image instance);
     partial void UpdateIris_Image(Iris_Image instance);
     partial void DeleteIris_Image(Iris_Image instance);
     partial void InsertLog_File(Log_File instance);
     partial void UpdateLog_File(Log_File instance);
     partial void DeleteLog_File(Log_File instance);
-    partial void InsertPerson(Person instance);
-    partial void UpdatePerson(Person instance);
-    partial void DeletePerson(Person instance);
     #endregion
 		
 		public IrisDatabaseDataContext() : 
-				base(global::IrisRecognition.Properties.Settings.Default.IrisDBConnectionString, mappingSource)
+				base(global::IrisRecognition.Properties.Settings.Default.IrisDataBaseConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -82,6 +82,14 @@ namespace IrisRecognition
 			}
 		}
 		
+		public System.Data.Linq.Table<Person> Persons
+		{
+			get
+			{
+				return this.GetTable<Person>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Iris_Image> Iris_Images
 		{
 			get
@@ -95,14 +103,6 @@ namespace IrisRecognition
 			get
 			{
 				return this.GetTable<Log_File>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Person> Persons
-		{
-			get
-			{
-				return this.GetTable<Person>();
 			}
 		}
 	}
@@ -163,7 +163,7 @@ namespace IrisRecognition
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int AdminID
 		{
 			get
@@ -263,7 +263,7 @@ namespace IrisRecognition
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(15)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
 		public string Username
 		{
 			get
@@ -283,7 +283,7 @@ namespace IrisRecognition
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
 		public string Password
 		{
 			get
@@ -389,332 +389,6 @@ namespace IrisRecognition
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Iris_Image")]
-	public partial class Iris_Image : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ImageID;
-		
-		private System.Data.Linq.Binary _ImagePattern;
-		
-		private int _PersonID;
-		
-		private EntityRef<Person> _Person;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnImageIDChanging(string value);
-    partial void OnImageIDChanged();
-    partial void OnImagePatternChanging(System.Data.Linq.Binary value);
-    partial void OnImagePatternChanged();
-    partial void OnPersonIDChanging(int value);
-    partial void OnPersonIDChanged();
-    #endregion
-		
-		public Iris_Image()
-		{
-			this._Person = default(EntityRef<Person>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageID", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ImageID
-		{
-			get
-			{
-				return this._ImageID;
-			}
-			set
-			{
-				if ((this._ImageID != value))
-				{
-					this.OnImageIDChanging(value);
-					this.SendPropertyChanging();
-					this._ImageID = value;
-					this.SendPropertyChanged("ImageID");
-					this.OnImageIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePattern", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary ImagePattern
-		{
-			get
-			{
-				return this._ImagePattern;
-			}
-			set
-			{
-				if ((this._ImagePattern != value))
-				{
-					this.OnImagePatternChanging(value);
-					this.SendPropertyChanging();
-					this._ImagePattern = value;
-					this.SendPropertyChanged("ImagePattern");
-					this.OnImagePatternChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonID", DbType="Int NOT NULL")]
-		public int PersonID
-		{
-			get
-			{
-				return this._PersonID;
-			}
-			set
-			{
-				if ((this._PersonID != value))
-				{
-					if (this._Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPersonIDChanging(value);
-					this.SendPropertyChanging();
-					this._PersonID = value;
-					this.SendPropertyChanged("PersonID");
-					this.OnPersonIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Iris_Image", Storage="_Person", ThisKey="PersonID", OtherKey="PersonID", IsForeignKey=true)]
-		public Person Person
-		{
-			get
-			{
-				return this._Person.Entity;
-			}
-			set
-			{
-				Person previousValue = this._Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Person.Entity = null;
-						previousValue.Iris_Images.Remove(this);
-					}
-					this._Person.Entity = value;
-					if ((value != null))
-					{
-						value.Iris_Images.Add(this);
-						this._PersonID = value.PersonID;
-					}
-					else
-					{
-						this._PersonID = default(int);
-					}
-					this.SendPropertyChanged("Person");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Log_File")]
-	public partial class Log_File : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _LogFileID;
-		
-		private System.Nullable<System.DateTime> _Date;
-		
-		private System.Nullable<System.TimeSpan> _Time;
-		
-		private System.Nullable<int> _PersonID;
-		
-		private EntityRef<Person> _Person;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnLogFileIDChanging(int value);
-    partial void OnLogFileIDChanged();
-    partial void OnDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateChanged();
-    partial void OnTimeChanging(System.Nullable<System.TimeSpan> value);
-    partial void OnTimeChanged();
-    partial void OnPersonIDChanging(System.Nullable<int> value);
-    partial void OnPersonIDChanged();
-    #endregion
-		
-		public Log_File()
-		{
-			this._Person = default(EntityRef<Person>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogFileID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int LogFileID
-		{
-			get
-			{
-				return this._LogFileID;
-			}
-			set
-			{
-				if ((this._LogFileID != value))
-				{
-					this.OnLogFileIDChanging(value);
-					this.SendPropertyChanging();
-					this._LogFileID = value;
-					this.SendPropertyChanged("LogFileID");
-					this.OnLogFileIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="Time")]
-		public System.Nullable<System.TimeSpan> Time
-		{
-			get
-			{
-				return this._Time;
-			}
-			set
-			{
-				if ((this._Time != value))
-				{
-					this.OnTimeChanging(value);
-					this.SendPropertyChanging();
-					this._Time = value;
-					this.SendPropertyChanged("Time");
-					this.OnTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonID", DbType="Int")]
-		public System.Nullable<int> PersonID
-		{
-			get
-			{
-				return this._PersonID;
-			}
-			set
-			{
-				if ((this._PersonID != value))
-				{
-					if (this._Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPersonIDChanging(value);
-					this.SendPropertyChanging();
-					this._PersonID = value;
-					this.SendPropertyChanged("PersonID");
-					this.OnPersonIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Log_File", Storage="_Person", ThisKey="PersonID", OtherKey="PersonID", IsForeignKey=true)]
-		public Person Person
-		{
-			get
-			{
-				return this._Person.Entity;
-			}
-			set
-			{
-				Person previousValue = this._Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Person.Entity = null;
-						previousValue.Log_Files.Remove(this);
-					}
-					this._Person.Entity = value;
-					if ((value != null))
-					{
-						value.Log_Files.Add(this);
-						this._PersonID = value.PersonID;
-					}
-					else
-					{
-						this._PersonID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Person");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Person")]
 	public partial class Person : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -809,7 +483,7 @@ namespace IrisRecognition
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int PersonID
 		{
 			get
@@ -829,7 +503,7 @@ namespace IrisRecognition
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NVarChar(50)")]
 		public string ID
 		{
 			get
@@ -849,7 +523,7 @@ namespace IrisRecognition
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FName", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FName", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
 		public string FName
 		{
 			get
@@ -1255,6 +929,332 @@ namespace IrisRecognition
 		{
 			this.SendPropertyChanging();
 			entity.Person = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Iris_Image")]
+	public partial class Iris_Image : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ImageID;
+		
+		private System.Data.Linq.Binary _ImagePattern;
+		
+		private System.Nullable<int> _PersonID;
+		
+		private EntityRef<Person> _Person;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnImageIDChanging(int value);
+    partial void OnImageIDChanged();
+    partial void OnImagePatternChanging(System.Data.Linq.Binary value);
+    partial void OnImagePatternChanged();
+    partial void OnPersonIDChanging(System.Nullable<int> value);
+    partial void OnPersonIDChanged();
+    #endregion
+		
+		public Iris_Image()
+		{
+			this._Person = default(EntityRef<Person>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ImageID
+		{
+			get
+			{
+				return this._ImageID;
+			}
+			set
+			{
+				if ((this._ImageID != value))
+				{
+					this.OnImageIDChanging(value);
+					this.SendPropertyChanging();
+					this._ImageID = value;
+					this.SendPropertyChanged("ImageID");
+					this.OnImageIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePattern", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ImagePattern
+		{
+			get
+			{
+				return this._ImagePattern;
+			}
+			set
+			{
+				if ((this._ImagePattern != value))
+				{
+					this.OnImagePatternChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePattern = value;
+					this.SendPropertyChanged("ImagePattern");
+					this.OnImagePatternChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonID", DbType="Int")]
+		public System.Nullable<int> PersonID
+		{
+			get
+			{
+				return this._PersonID;
+			}
+			set
+			{
+				if ((this._PersonID != value))
+				{
+					if (this._Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPersonIDChanging(value);
+					this.SendPropertyChanging();
+					this._PersonID = value;
+					this.SendPropertyChanged("PersonID");
+					this.OnPersonIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Iris_Image", Storage="_Person", ThisKey="PersonID", OtherKey="PersonID", IsForeignKey=true)]
+		public Person Person
+		{
+			get
+			{
+				return this._Person.Entity;
+			}
+			set
+			{
+				Person previousValue = this._Person.Entity;
+				if (((previousValue != value) 
+							|| (this._Person.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Person.Entity = null;
+						previousValue.Iris_Images.Remove(this);
+					}
+					this._Person.Entity = value;
+					if ((value != null))
+					{
+						value.Iris_Images.Add(this);
+						this._PersonID = value.PersonID;
+					}
+					else
+					{
+						this._PersonID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Person");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Log_File")]
+	public partial class Log_File : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _LogFileID;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private System.Nullable<System.TimeSpan> _Time;
+		
+		private System.Nullable<int> _PersonID;
+		
+		private EntityRef<Person> _Person;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLogFileIDChanging(int value);
+    partial void OnLogFileIDChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnTimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnTimeChanged();
+    partial void OnPersonIDChanging(System.Nullable<int> value);
+    partial void OnPersonIDChanged();
+    #endregion
+		
+		public Log_File()
+		{
+			this._Person = default(EntityRef<Person>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogFileID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int LogFileID
+		{
+			get
+			{
+				return this._LogFileID;
+			}
+			set
+			{
+				if ((this._LogFileID != value))
+				{
+					this.OnLogFileIDChanging(value);
+					this.SendPropertyChanging();
+					this._LogFileID = value;
+					this.SendPropertyChanged("LogFileID");
+					this.OnLogFileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="Time")]
+		public System.Nullable<System.TimeSpan> Time
+		{
+			get
+			{
+				return this._Time;
+			}
+			set
+			{
+				if ((this._Time != value))
+				{
+					this.OnTimeChanging(value);
+					this.SendPropertyChanging();
+					this._Time = value;
+					this.SendPropertyChanged("Time");
+					this.OnTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonID", DbType="Int")]
+		public System.Nullable<int> PersonID
+		{
+			get
+			{
+				return this._PersonID;
+			}
+			set
+			{
+				if ((this._PersonID != value))
+				{
+					if (this._Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPersonIDChanging(value);
+					this.SendPropertyChanging();
+					this._PersonID = value;
+					this.SendPropertyChanged("PersonID");
+					this.OnPersonIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Log_File", Storage="_Person", ThisKey="PersonID", OtherKey="PersonID", IsForeignKey=true)]
+		public Person Person
+		{
+			get
+			{
+				return this._Person.Entity;
+			}
+			set
+			{
+				Person previousValue = this._Person.Entity;
+				if (((previousValue != value) 
+							|| (this._Person.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Person.Entity = null;
+						previousValue.Log_Files.Remove(this);
+					}
+					this._Person.Entity = value;
+					if ((value != null))
+					{
+						value.Log_Files.Add(this);
+						this._PersonID = value.PersonID;
+					}
+					else
+					{
+						this._PersonID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Person");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

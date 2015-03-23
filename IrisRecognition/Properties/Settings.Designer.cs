@@ -33,5 +33,38 @@ namespace IrisRecognition.Properties {
                 return ((string)(this["IrisDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\IrisDataBase.mdf;Int" +
+            "egrated Security=True")]
+        public string IrisDataBaseConnectionString {
+            get {
+                return ((string)(this["IrisDataBaseConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\IrisDataBase.mdf;Int" +
+            "egrated Security=True;Connect Timeout=30")]
+        public string IrisDataBaseConnectionString1 {
+            get {
+                return ((string)(this["IrisDataBaseConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\bin\\Debug\\IrisDataBa" +
+            "se.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string IrisDataBaseConnectionString2 {
+            get {
+                return ((string)(this["IrisDataBaseConnectionString2"]));
+            }
+        }
     }
 }
