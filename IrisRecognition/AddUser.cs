@@ -28,7 +28,13 @@ namespace IrisRecognition
         {
             Person p = new Person();
             //p.PersonID = '4';
-            p.ID =  Convert.ToString('1');
+            p.ID = comboBoxGender.SelectedIndex.ToString() +
+                dateTimePickerDateOfBirth.Value.Year.ToString() +
+                dateTimePickerDateOfBirth.Value.Month.ToString() +
+                dateTimePickerDateOfBirth.Value.Day.ToString() +
+                comboBoxDepartment.SelectedIndex.ToString() +
+                comboBoxProvince.SelectedIndex.ToString() +
+                comboBoxDesignation.SelectedIndex.ToString();
 
             p.FName = textBoxFName.Text;
             p.LName = textBoxLName.Text;
@@ -42,11 +48,11 @@ namespace IrisRecognition
             p.DoB = dateTimePickerDateOfBirth.Value;
             p.CNIC = textBoxCNIC.Text;
             p.Address = textBoxAddress.Text;
-            p.Department = textBoxDepartment.Text;
-            p.Designation = textBoxDesignation.Text;
+            p.Department = comboBoxDepartment.Text;
+            p.Designation = comboBoxDesignation.Text;
             p.Email = textBoxEmail.Text;
             p.Gender = comboBoxGender.Text;
-            p.Province = textBoxProvince.Text;
+            p.Province = comboBoxProvince.Text;
 
             //Iris_Image newIrisImage = new Iris_Image();
             //newIrisImage.ImageID = textBox1.Text;
@@ -60,7 +66,7 @@ namespace IrisRecognition
             db.Persons.InsertOnSubmit(p);
             db.SubmitChanges();
 
-            AddIrisImage aii = new AddIrisImage();
+            AddIrisImage aii = new AddIrisImage(p.PersonID);
             aii.ShowDialog();
 
             //storing image in iris_image table
@@ -122,6 +128,14 @@ namespace IrisRecognition
             //Image img  = (Image)converter.ConvertTo(ii.ImagePattern, typeof(Image));
 
             pictureBox2.Image = img;
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu mm = new MainMenu("anwar");
+            this.Owner = mm;
+            mm.Show();
         }
     }
 }

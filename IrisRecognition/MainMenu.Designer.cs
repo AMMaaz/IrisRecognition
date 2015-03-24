@@ -34,13 +34,15 @@
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonViewUsers = new System.Windows.Forms.Button();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonViewLogFiles
             // 
-            this.buttonViewLogFiles.Location = new System.Drawing.Point(273, 240);
+            this.buttonViewLogFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonViewLogFiles.Location = new System.Drawing.Point(12, 166);
             this.buttonViewLogFiles.Name = "buttonViewLogFiles";
-            this.buttonViewLogFiles.Size = new System.Drawing.Size(75, 23);
+            this.buttonViewLogFiles.Size = new System.Drawing.Size(202, 54);
             this.buttonViewLogFiles.TabIndex = 5;
             this.buttonViewLogFiles.Text = "view log files";
             this.buttonViewLogFiles.UseVisualStyleBackColor = true;
@@ -48,9 +50,10 @@
             // 
             // buttonDeleteUser
             // 
-            this.buttonDeleteUser.Location = new System.Drawing.Point(273, 211);
+            this.buttonDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteUser.Location = new System.Drawing.Point(12, 108);
             this.buttonDeleteUser.Name = "buttonDeleteUser";
-            this.buttonDeleteUser.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteUser.Size = new System.Drawing.Size(202, 54);
             this.buttonDeleteUser.TabIndex = 4;
             this.buttonDeleteUser.Text = "delete user";
             this.buttonDeleteUser.UseVisualStyleBackColor = true;
@@ -58,9 +61,10 @@
             // 
             // buttonAddUser
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(273, 182);
+            this.buttonAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddUser.Location = new System.Drawing.Point(12, 48);
             this.buttonAddUser.Name = "buttonAddUser";
-            this.buttonAddUser.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddUser.Size = new System.Drawing.Size(202, 54);
             this.buttonAddUser.TabIndex = 3;
             this.buttonAddUser.Text = "add user";
             this.buttonAddUser.UseVisualStyleBackColor = true;
@@ -68,9 +72,10 @@
             // 
             // buttonViewUsers
             // 
-            this.buttonViewUsers.Location = new System.Drawing.Point(273, 269);
+            this.buttonViewUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonViewUsers.Location = new System.Drawing.Point(12, 226);
             this.buttonViewUsers.Name = "buttonViewUsers";
-            this.buttonViewUsers.Size = new System.Drawing.Size(75, 23);
+            this.buttonViewUsers.Size = new System.Drawing.Size(202, 54);
             this.buttonViewUsers.TabIndex = 6;
             this.buttonViewUsers.Text = "view users";
             this.buttonViewUsers.UseVisualStyleBackColor = true;
@@ -78,17 +83,30 @@
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(412, 21);
+            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.Location = new System.Drawing.Point(12, 19);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(55, 13);
+            this.labelUsername.Size = new System.Drawing.Size(69, 17);
             this.labelUsername.TabIndex = 7;
             this.labelUsername.Text = "Welcome!";
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.Location = new System.Drawing.Point(12, 286);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(202, 54);
+            this.buttonCancel.TabIndex = 8;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 445);
+            this.ClientSize = new System.Drawing.Size(226, 352);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.buttonViewUsers);
             this.Controls.Add(this.buttonViewLogFiles);
@@ -96,7 +114,7 @@
             this.Controls.Add(this.buttonAddUser);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainMenu";
-            this.Text = "Iris Authentication System - Main Menu";
+            this.Text = "Main Menu - Iris Authentication System";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -110,5 +128,6 @@
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.Button buttonViewUsers;
         private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

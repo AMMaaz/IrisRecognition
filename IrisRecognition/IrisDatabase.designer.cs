@@ -45,7 +45,7 @@ namespace IrisRecognition
     #endregion
 		
 		public IrisDatabaseDataContext() : 
-				base(global::IrisRecognition.Properties.Settings.Default.IrisDataBaseConnectionString1, mappingSource)
+				base(global::IrisRecognition.Properties.Settings.Default.IrisDataBaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

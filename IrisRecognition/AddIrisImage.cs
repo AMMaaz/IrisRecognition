@@ -12,13 +12,14 @@ namespace IrisRecognition
 {
     public partial class AddIrisImage : Form
     {
-        public AddIrisImage()
+        public AddIrisImage(int personid)
         {
             InitializeComponent();
+            id = personid;
         }
 
         IrisDatabaseDataContext db = new IrisDatabaseDataContext();
-
+        int id;
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
@@ -33,9 +34,12 @@ namespace IrisRecognition
 
             ii.ImagePattern = img;
 
+            ii.PersonID = id;
+
             db.Iris_Images.InsertOnSubmit(ii);
             db.SubmitChanges();
             this.Close();
+            MessageBox.Show("User added");            
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

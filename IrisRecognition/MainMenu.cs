@@ -20,28 +20,37 @@ namespace IrisRecognition
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             AddUser au = new AddUser();
+            this.Owner = au;
             au.Show();
         }
 
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             DeleteUser du = new DeleteUser();
+            this.Owner = du;
             du.Show();
         }
 
         private void buttonViewLogFiles_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             ViewLogFiles vlf = new ViewLogFiles();
+            this.Owner = vlf;
             vlf.Show();
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
             //labelUsername.Text = "Welcome" + 
+
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace IrisRecognition
                 //Application.Run(new MainMenu());
                 MainMenu mm = new MainMenu(textBoxUsername.Text);
                 mm.Show();
+                this.Owner = mm;
                 this.Hide();
             }
             else
@@ -44,5 +45,6 @@ namespace IrisRecognition
         {
             this.Close();
         }
+
     }
 }

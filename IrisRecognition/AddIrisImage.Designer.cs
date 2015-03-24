@@ -57,7 +57,6 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "\"image files|*.jpg; *.png; *.gif\"";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
@@ -91,7 +90,7 @@
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.pictureBoxIris);
             this.Name = "AddIrisImage";
-            this.Text = "AddIrisImage";
+            this.Text = "Add Iris Image - Iris Authentication System";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIris)).EndInit();
             this.ResumeLayout(false);
 
