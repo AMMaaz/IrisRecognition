@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace IrisRecognition
 {
-    public partial class ViewLogFiles : Form
+    public partial class ViewUsers : Form
     {
-        public ViewLogFiles(int admin)
+        public ViewUsers()
         {
             InitializeComponent();
+        }
+
+        private void ViewUsers_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

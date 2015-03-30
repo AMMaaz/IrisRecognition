@@ -12,16 +12,24 @@ namespace IrisRecognition
 {
     public partial class MainMenu : Form
     {
-        public MainMenu(string username)
+        public MainMenu(int admin)
         {
             InitializeComponent();
-            labelUsername.Text = "Welcome! " + username;
+            var result = (from x in db.Administrators
+                         where x.AdminID.Equals(admin)
+                         select x).FirstOrDefault();
+
+            labelUsername.Text = "Welcome! " + result.FName + " " + result.LName;
+            loggedin = admin;
         }
+
+        int loggedin;
+        IrisDatabaseDataContext db = new IrisDatabaseDataContext();
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddUser au = new AddUser();
+            AddUser au = new AddUser(loggedin);
             this.Owner = au;
             au.Show();
         }
@@ -29,7 +37,7 @@ namespace IrisRecognition
         private void buttonDeleteUser_Click(object sender, EventArgs e)
         {
             this.Hide();
-            DeleteUser du = new DeleteUser();
+            DeleteUser du = new DeleteUser(loggedin);
             this.Owner = du;
             du.Show();
         }
@@ -37,7 +45,7 @@ namespace IrisRecognition
         private void buttonViewLogFiles_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ViewLogFiles vlf = new ViewLogFiles();
+            ViewLogFiles vlf = new ViewLogFiles(loggedin);
             this.Owner = vlf;
             vlf.Show();
         }

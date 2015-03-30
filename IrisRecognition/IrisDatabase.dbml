@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IrisDataBase" Class="IrisDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\IrisDataBase.mdf;Integrated Security=True" SettingsObjectName="IrisRecognition.Properties.Settings" SettingsPropertyName="IrisDataBaseConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Administrator" Member="Administrators">
-    <Type Name="Administrator">
-      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FName" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="LName" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Username" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Adress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CNIC" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Association Name="Administrator_Person" Member="Persons" ThisKey="AdminID" OtherKey="AdminID" Type="Person" />
-    </Type>
-  </Table>
   <Table Name="dbo.Person" Member="Persons">
     <Type Name="Person">
       <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -24,12 +10,12 @@
       <Column Name="CNIC" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="Mobile" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DoB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Designation" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Province" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Designation" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Gender" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="Department" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="RegisteredBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="AdminID" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -53,6 +39,20 @@
       <Column Name="Time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="PersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Person_Log_File" Member="Person" ThisKey="PersonID" OtherKey="PersonID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Administrator" Member="Administrators">
+    <Type Name="Administrator">
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Adress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CNIC" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="Administrator_Person" Member="Persons" ThisKey="AdminID" OtherKey="AdminID" Type="Person" />
     </Type>
   </Table>
 </Database>

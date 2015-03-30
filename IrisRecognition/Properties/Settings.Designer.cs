@@ -49,7 +49,7 @@ namespace IrisRecognition.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\IrisDataBase.mdf;Int" +
-            "egrated Security=True;Connect Timeout=30")]
+            "egrated Security=True")]
         public string IrisDataBaseConnectionString1 {
             get {
                 return ((string)(this["IrisDataBaseConnectionString1"]));

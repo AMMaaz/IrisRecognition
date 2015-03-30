@@ -12,11 +12,13 @@ namespace IrisRecognition
 {
     public partial class DeleteUser : Form
     {
-        public DeleteUser()
+        public DeleteUser(int admin)
         {
             InitializeComponent();
+            loggedin = admin;
         }
 
+        int loggedin;
         IrisDatabaseDataContext db = new IrisDatabaseDataContext();
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -24,6 +26,14 @@ namespace IrisRecognition
             Person p = db.Persons.First(person => person.PersonID == Convert.ToInt32(textBox1.Text));
             db.Persons.DeleteOnSubmit(p);
             db.SubmitChanges();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainMenu mm = new MainMenu(loggedin);
+            this.Owner = mm;
+            mm.Show();
         }
     }
 }

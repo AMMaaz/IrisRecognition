@@ -17,6 +17,7 @@ namespace IrisRecognition
             InitializeComponent();
         }
 
+        int loggedin;
         IrisDatabaseDataContext db = new IrisDatabaseDataContext();
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -29,7 +30,9 @@ namespace IrisRecognition
             {
                 //this.Close();
                 //Application.Run(new MainMenu());
-                MainMenu mm = new MainMenu(textBoxUsername.Text);
+
+                loggedin = result.AdminID;
+                MainMenu mm = new MainMenu(loggedin);
                 mm.Show();
                 this.Owner = mm;
                 this.Hide();

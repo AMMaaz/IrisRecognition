@@ -12,11 +12,13 @@ namespace IrisRecognition
 {
     public partial class AddUser : Form
     {
-        public AddUser()
+        public AddUser(int admin)
         {
             InitializeComponent();
+            loggedin = admin;
         }
 
+        int loggedin;
         IrisDatabaseDataContext db = new IrisDatabaseDataContext();
 
         private void buttonBrowse_Click(object sender, EventArgs e)
@@ -28,13 +30,13 @@ namespace IrisRecognition
         {
             Person p = new Person();
             //p.PersonID = '4';
-            p.ID = comboBoxGender.SelectedIndex.ToString() +
-                dateTimePickerDateOfBirth.Value.Year.ToString() +
-                dateTimePickerDateOfBirth.Value.Month.ToString() +
-                dateTimePickerDateOfBirth.Value.Day.ToString() +
+            p.ID = comboBoxGender.SelectedIndex.ToString() +             
                 comboBoxDepartment.SelectedIndex.ToString() +
                 comboBoxProvince.SelectedIndex.ToString() +
-                comboBoxDesignation.SelectedIndex.ToString();
+                comboBoxDesignation.SelectedIndex.ToString() +
+                dateTimePickerDateOfBirth.Value.Month.ToString() +
+                dateTimePickerDateOfBirth.Value.Year.ToString() +
+                dateTimePickerDateOfBirth.Value.Day.ToString();
 
             p.FName = textBoxFName.Text;
             p.LName = textBoxLName.Text;
@@ -53,6 +55,13 @@ namespace IrisRecognition
             p.Email = textBoxEmail.Text;
             p.Gender = comboBoxGender.Text;
             p.Province = comboBoxProvince.Text;
+            p.AdminID = loggedin;
+
+            var result = (from x in db.Administrators
+                         where x.AdminID.Equals(loggedin)
+                         select x).FirstOrDefault();
+
+            p.RegisteredBy = result.Username;
 
             //Iris_Image newIrisImage = new Iris_Image();
             //newIrisImage.ImageID = textBox1.Text;
@@ -133,7 +142,7 @@ namespace IrisRecognition
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MainMenu mm = new MainMenu("anwar");
+            MainMenu mm = new MainMenu(loggedin);
             this.Owner = mm;
             mm.Show();
         }
