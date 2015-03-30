@@ -39,7 +39,8 @@ namespace IrisRecognition
             db.Iris_Images.InsertOnSubmit(ii);
             db.SubmitChanges();
             this.Close();
-            MessageBox.Show("User added");            
+            MessageBox.Show("User added");    
+            
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

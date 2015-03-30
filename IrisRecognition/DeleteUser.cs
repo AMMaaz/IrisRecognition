@@ -25,7 +25,10 @@ namespace IrisRecognition
         {
             Person p = db.Persons.First(person => person.PersonID == Convert.ToInt32(textBox1.Text));
             db.Persons.DeleteOnSubmit(p);
+            Iris_Image ii = db.Iris_Images.First(Iris_Image => Iris_Image.PersonID == Convert.ToInt32(textBox1.Text));
+            db.Iris_Images.DeleteOnSubmit(ii);
             db.SubmitChanges();
+            MessageBox.Show("User Deleted");
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

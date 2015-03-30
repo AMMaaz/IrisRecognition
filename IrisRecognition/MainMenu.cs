@@ -60,5 +60,13 @@ namespace IrisRecognition
         {
             this.Close();
         }
+
+        private void buttonViewUsers_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewUsers vu = new ViewUsers(loggedin);
+            this.Owner = vu;
+            vu.Show();
+        }
     }
 }

@@ -89,6 +89,10 @@ namespace IrisRecognition
             //ii.ImagePattern = imge;
             //db.Iris_Images.InsertOnSubmit(ii);
             //db.SubmitChanges();
+            AddUser au = new AddUser(loggedin);
+            au.Show();
+            this.Owner = au;
+            this.Hide();
         }
 
         private void AddUser_Load(object sender, EventArgs e)

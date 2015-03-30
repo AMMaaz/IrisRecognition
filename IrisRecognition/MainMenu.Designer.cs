@@ -79,6 +79,7 @@
             this.buttonViewUsers.TabIndex = 6;
             this.buttonViewUsers.Text = "view users";
             this.buttonViewUsers.UseVisualStyleBackColor = true;
+            this.buttonViewUsers.Click += new System.EventHandler(this.buttonViewUsers_Click);
             // 
             // labelUsername
             // 

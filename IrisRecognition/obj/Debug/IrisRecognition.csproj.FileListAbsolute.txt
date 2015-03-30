@@ -21,3 +21,4 @@ C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecogni
 C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecognition.ViewLogFiles.resources
 C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\bin\Debug\IrisDataBase.mdf
 C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\bin\Debug\IrisDataBase_log.ldf
+C:\G3\8th Semester\project\IrisRecognition\IrisRecognition\obj\Debug\IrisRecognition.ViewUsers.resources
