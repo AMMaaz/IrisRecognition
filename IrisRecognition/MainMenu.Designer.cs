@@ -44,7 +44,7 @@
             this.buttonViewLogFiles.Name = "buttonViewLogFiles";
             this.buttonViewLogFiles.Size = new System.Drawing.Size(202, 54);
             this.buttonViewLogFiles.TabIndex = 5;
-            this.buttonViewLogFiles.Text = "view log files";
+            this.buttonViewLogFiles.Text = "View LogFiles";
             this.buttonViewLogFiles.UseVisualStyleBackColor = true;
             this.buttonViewLogFiles.Click += new System.EventHandler(this.buttonViewLogFiles_Click);
             // 
@@ -55,7 +55,7 @@
             this.buttonDeleteUser.Name = "buttonDeleteUser";
             this.buttonDeleteUser.Size = new System.Drawing.Size(202, 54);
             this.buttonDeleteUser.TabIndex = 4;
-            this.buttonDeleteUser.Text = "delete user";
+            this.buttonDeleteUser.Text = "Delete User";
             this.buttonDeleteUser.UseVisualStyleBackColor = true;
             this.buttonDeleteUser.Click += new System.EventHandler(this.buttonDeleteUser_Click);
             // 
@@ -66,7 +66,7 @@
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(202, 54);
             this.buttonAddUser.TabIndex = 3;
-            this.buttonAddUser.Text = "add user";
+            this.buttonAddUser.Text = "Add User";
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
@@ -77,7 +77,7 @@
             this.buttonViewUsers.Name = "buttonViewUsers";
             this.buttonViewUsers.Size = new System.Drawing.Size(202, 54);
             this.buttonViewUsers.TabIndex = 6;
-            this.buttonViewUsers.Text = "view users";
+            this.buttonViewUsers.Text = "View Users";
             this.buttonViewUsers.UseVisualStyleBackColor = true;
             this.buttonViewUsers.Click += new System.EventHandler(this.buttonViewUsers_Click);
             // 
