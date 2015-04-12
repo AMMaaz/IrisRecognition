@@ -62,12 +62,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.groupBoxPhoto = new System.Windows.Forms.GroupBox();
             this.groupBoxBasic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBoxPhoto.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -82,7 +80,7 @@
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(6, 162);
+            this.buttonBrowse.Location = new System.Drawing.Point(482, 159);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
             this.buttonBrowse.TabIndex = 13;
@@ -204,7 +202,9 @@
             this.groupBoxBasic.Controls.Add(this.label10);
             this.groupBoxBasic.Controls.Add(this.dateTimePickerDateOfBirth);
             this.groupBoxBasic.Controls.Add(this.label9);
+            this.groupBoxBasic.Controls.Add(this.buttonBrowse);
             this.groupBoxBasic.Controls.Add(this.label8);
+            this.groupBoxBasic.Controls.Add(this.pictureBox2);
             this.groupBoxBasic.Controls.Add(this.textBoxEmail);
             this.groupBoxBasic.Controls.Add(this.textBoxMobile);
             this.groupBoxBasic.Controls.Add(this.textBoxPhone);
@@ -217,7 +217,6 @@
             this.groupBoxBasic.Controls.Add(this.label3);
             this.groupBoxBasic.Controls.Add(this.label2);
             this.groupBoxBasic.Controls.Add(this.label1);
-            this.groupBoxBasic.Controls.Add(this.groupBoxPhoto);
             this.groupBoxBasic.Location = new System.Drawing.Point(69, 12);
             this.groupBoxBasic.Name = "groupBoxBasic";
             this.groupBoxBasic.Size = new System.Drawing.Size(674, 345);
@@ -357,7 +356,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(6, 28);
+            this.pictureBox2.Location = new System.Drawing.Point(482, 19);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(140, 128);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -387,7 +386,6 @@
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(685, 363);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -405,17 +403,6 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // groupBoxPhoto
-            // 
-            this.groupBoxPhoto.Controls.Add(this.pictureBox2);
-            this.groupBoxPhoto.Controls.Add(this.buttonBrowse);
-            this.groupBoxPhoto.Location = new System.Drawing.Point(481, 10);
-            this.groupBoxPhoto.Name = "groupBoxPhoto";
-            this.groupBoxPhoto.Size = new System.Drawing.Size(157, 200);
-            this.groupBoxPhoto.TabIndex = 23;
-            this.groupBoxPhoto.TabStop = false;
-            this.groupBoxPhoto.Text = "Photo";
             // 
             // AddUser
             // 
@@ -437,7 +424,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBoxPhoto.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -477,6 +463,5 @@
         private System.Windows.Forms.ComboBox comboBoxDepartment;
         private System.Windows.Forms.ComboBox comboBoxDesignation;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.GroupBox groupBoxPhoto;
     }
 }

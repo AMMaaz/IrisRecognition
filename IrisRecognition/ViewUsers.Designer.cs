@@ -60,7 +60,7 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.dataGridViewUsers);
             this.Name = "ViewUsers";
-            this.Text = "View Users - Iris Authentication System";
+            this.Text = "ViewUsers";
             this.Load += new System.EventHandler(this.ViewUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.ResumeLayout(false);
